@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_example/navigation/router.dart';
 
 class Screen extends StatelessWidget {
   Screen({Key? key, required this.route}) : super(key: key);
@@ -10,7 +11,8 @@ class Screen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
   bool validate() {
-    return _formKey.currentState?.validate() ?? false;
+    return true;
+    // return _formKey.currentState?.validate() ?? false;
   }
 
   @override
@@ -80,6 +82,13 @@ class Screen extends StatelessWidget {
                 }
               },
               child: const Text('GO NAMED'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                router.pop();
+              },
+              child: const Text('POP'),
             ),
             const SizedBox(height: 20),
           ],

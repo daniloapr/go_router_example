@@ -3,7 +3,6 @@ import 'package:go_router_example/screen.dart';
 
 final router = GoRouter(
   initialLocation: '/',
-  urlPathStrategy: UrlPathStrategy.path,
   routes: [
     GoRoute(
       path: '/',
@@ -12,11 +11,13 @@ final router = GoRouter(
       ),
       routes: [
         GoRoute(
-            path: 'a',
-            builder: (context, state) => Screen(route: state.location),
-            routes: [
-              buildRoute('b'),
-            ]),
+          path: 'a',
+          name: 'a',
+          builder: (context, state) => Screen(route: state.location),
+          routes: [
+            buildRoute('b'),
+          ],
+        ),
       ],
     ),
   ],
@@ -25,6 +26,7 @@ final router = GoRouter(
 GoRoute buildRoute(String path) {
   return GoRoute(
     path: path,
+    name: path,
     builder: (context, state) => Screen(
       route: state.location,
     ),
